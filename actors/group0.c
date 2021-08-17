@@ -25,3 +25,8 @@
 #include "white_particle_small/model.inc.c"
 
 #include "sparkle_animation/model.inc.c"
+
+#include "blinking_mushroom/model.inc.c"
+
+#include "z_moving_platform/model.inc.c"
+#include "z_moving_platform/collision.inc.c"

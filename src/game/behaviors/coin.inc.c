@@ -15,6 +15,16 @@ struct ObjectHitbox sYellowCoinHitbox = {
 s16 D_8032F2A4[][2] = { { 0, -150 },  { 0, -50 },   { 0, 50 },   { 0, 150 },
                         { -50, 100 }, { -100, 50 }, { 50, 100 }, { 100, 50 } };
 
+s32 bhv_mushroom_sparkles_init(void) {
+    if (o->oInteractStatus & INT_STATUS_INTERACTED && !(o->oInteractStatus & INT_STATUS_TOUCHED_BOB_OMB)) {
+        spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
+        obj_mark_for_deletion(o);
+        return 1;
+    }
+    o->oInteractStatus = 0;
+    return 0;
+}
+
 s32 bhv_coin_sparkles_init(void) {
     if (o->oInteractStatus & INT_STATUS_INTERACTED && !(o->oInteractStatus & INT_STATUS_TOUCHED_BOB_OMB)) {
         spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
@@ -258,4 +268,4 @@ void bhv_golden_coin_sparkles_loop(void) {
     sp2C = spawn_object(o, MODEL_SPARKLES, bhvCoinSparkles);
     sp2C->oPosX += random_float() * sp24 - sp24 / 2;
     sp2C->oPosZ += random_float() * sp24 - sp24 / 2;
-}
+    }

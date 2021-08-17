@@ -342,4 +342,47 @@ extern const Gfx white_particle_small_dl_end[];
 extern const Gfx white_particle_small_dl[];
 extern const Gfx white_particle_small_unused_dl[];
 
+// blinking_mushroom
+extern const GeoLayout blinking_mushroom_000_switch_opt1[];
+extern const GeoLayout blinking_mushroom_000_switch_opt2[];
+extern const GeoLayout blinking_mushroom_000_switch_opt3[];
+extern const GeoLayout blinking_mushroom_000_switch_opt4[];
+extern const GeoLayout blinking_mushroom_000_switch_opt5[];
+extern const GeoLayout blinking_mushroom_000_switch_opt6[];
+extern const GeoLayout blinking_mushroom_000_switch_opt7[];
+extern const GeoLayout blinking_mushroom_000_switch_opt8[];
+extern const GeoLayout blinking_mushroom_000_switch_opt9[];
+extern const GeoLayout blinking_mushroom_000_switch_opt10[];
+extern const GeoLayout blinking_mushroom_000_switch_opt11[];
+extern const GeoLayout blinking_mushroom_000_switch_opt12[];
+extern const GeoLayout blinking_mushroom_000_switch_opt13[];
+extern const GeoLayout blinking_mushroom_geo[];
+extern Gfx blinking_mushroom_material_revert_render_settings[];
+
+// z_moving_platfrom
+extern const GeoLayout z_moving_platform_geo[];
+extern u8 z_moving_platform_bluepuss_ci4[];
+extern u8 z_moving_platform_bluepuss_ci4_pal_rgba16[];
+extern u8 z_moving_platform_blueflesh2_ci4[];
+extern u8 z_moving_platform_blueflesh2_ci4_pal_rgba16[];
+extern Vtx z_moving_platform_Mesh_mesh_layer_1_vtx_cull[8];
+extern Vtx z_moving_platform_Mesh_mesh_layer_1_vtx_0[24];
+extern Gfx z_moving_platform_Mesh_mesh_layer_1_tri_0[];
+extern Vtx z_moving_platform_Mesh_mesh_vtx_cull[8];
+extern Vtx z_moving_platform_Mesh_mesh_vtx_0[32];
+extern Gfx z_moving_platform_Mesh_mesh_tri_0[];
+extern Gfx mat_z_moving_platform_pussplatformtop[];
+extern Gfx mat_revert_z_moving_platform_pussplatformtop[];
+extern Gfx mat_z_moving_platform_pussplatformwalls[];
+extern Gfx mat_revert_z_moving_platform_pussplatformwalls[];
+extern Gfx z_moving_platform_Mesh_mesh_layer_1[];
+extern Gfx z_moving_platform_Mesh_mesh[];
+extern Gfx z_moving_platform_material_revert_render_settings[];
+
+#include "blinking_mushroom/geo_header.h"
+
+#include "z_moving_platform/geo_header.h"
+
+#include "z_moving_platform/collision_header.h"
+
 #endif

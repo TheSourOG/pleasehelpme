@@ -15,6 +15,8 @@
 // It doesn't match if ".0" is removed or ".f" is added
 #define FLOOR_LOWER_LIMIT_SHADOW    (FLOOR_LOWER_LIMIT + 1000.0)
 
+extern const Collision z_moving_platform_collision[];
+
 struct WallCollisionData
 {
     /*0x00*/ f32 x, y, z;

@@ -1,0 +1,16 @@
+extern const GeoLayout z_moving_platform_geo[];
+extern u8 z_moving_platform_bluepuss_ci4[];
+extern u8 z_moving_platform_bluepuss_ci4_pal_rgba16[];
+extern u8 z_moving_platform_blueflesh2_ci4[];
+extern u8 z_moving_platform_blueflesh2_ci4_pal_rgba16[];
+extern Vtx z_moving_platform_Mesh_mesh_layer_1_vtx_cull[8];
+extern Vtx z_moving_platform_Mesh_mesh_layer_1_vtx_0[24];
+extern Gfx z_moving_platform_Mesh_mesh_layer_1_tri_0[];
+extern Vtx z_moving_platform_Mesh_mesh_layer_1_vtx_1[32];
+extern Gfx z_moving_platform_Mesh_mesh_layer_1_tri_1[];
+extern Gfx mat_z_moving_platform_pussplatformtop[];
+extern Gfx mat_revert_z_moving_platform_pussplatformtop[];
+extern Gfx mat_z_moving_platform_pussplatformsides[];
+extern Gfx mat_revert_z_moving_platform_pussplatformsides[];
+extern Gfx z_moving_platform_Mesh_mesh_layer_1[];
+extern Gfx z_moving_platform_material_revert_render_settings[];

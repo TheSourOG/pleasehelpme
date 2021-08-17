@@ -16,3 +16,6 @@
 #include "water_splash/geo.inc.c"
 #include "sparkle_animation/geo.inc.c"
 #include "mario/geo.inc.c"
+#include "blinking_mushroom/geo.inc.c"
+
+#include "z_moving_platform/geo.inc.c"

@@ -98,6 +98,7 @@ void bhv_bitfs_sinking_cage_platform_loop(void);
 void bhv_ddd_moving_pole_loop(void);
 void bhv_platform_normals_init(void);
 void bhv_tilting_inverted_pyramid_loop(void);
+void bhv_squishable_platform_init(void);
 void bhv_squishable_platform_loop(void);
 void bhv_beta_moving_flames_spawn_loop(void);
 void bhv_beta_moving_flames_loop(void);
@@ -129,6 +130,7 @@ void bhv_init_room(void);
 void bhv_small_water_wave_loop(void);
 void bhv_yellow_coin_init(void);
 void bhv_yellow_coin_loop(void);
+void bhv_z_moving_platform_loop(void);
 void bhv_squarish_path_moving_loop(void);
 void bhv_heave_ho_loop(void);
 void bhv_heave_ho_throw_mario_loop(void);
@@ -551,6 +553,8 @@ void bhv_intro_scene_loop(void);
 void bhv_dust_smoke_loop(void);
 void bhv_yoshi_loop(void);
 void bhv_volcano_trap_loop(void);
+
+void bhv_blinking_mushroom_loop(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 run, UNUSED struct GraphNode *node, Mat4 mtx);
 

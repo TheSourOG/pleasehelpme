@@ -56,6 +56,8 @@
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
 
+#include "src/engine/surface_collision.h"
+
 #define BC_B(a) _SHIFTL(a, 24, 8)
 #define BC_BB(a, b) (_SHIFTL(a, 24, 8) | _SHIFTL(b, 16, 8))
 #define BC_BBBB(a, b, c, d) (_SHIFTL(a, 24, 8) | _SHIFTL(b, 16, 8) | _SHIFTL(c, 8, 8) | _SHIFTL(d, 0, 8))
@@ -6106,4 +6108,24 @@ const BehaviorScript bhvIntroScene[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvBlinkingMushroom[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    SET_INT(oInteractType, INTERACT_COIN),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_yellow_coin_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_blinking_mushroom_loop),
+    END_LOOP(),
+};
 
+const BehaviorScript bhvZMovingPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(z_moving_platform_collision),
+    SET_FLOAT(oCollisionDistance, 2000),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_squishable_platform_init),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
