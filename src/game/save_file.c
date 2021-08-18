@@ -11,16 +11,18 @@
 #include "level_table.h"
 #include "course_table.h"
 #include "rumble_init.h"
+#include "config.h"
 #ifdef SRAM
 #include "sram.h"
 #endif
+#include "puppycam2.h"
 
 #define ALIGN4(val) (((val) + 0x3) & ~0x3)
 
 #define MENU_DATA_MAGIC 0x4849
 #define SAVE_FILE_MAGIC 0x4441
 
-STATIC_ASSERT(sizeof(struct SaveBuffer) == EEPROM_SIZE, "eeprom buffer size must match");
+//STATIC_ASSERT(sizeof(struct SaveBuffer) == EEPROM_SIZE, "eeprom buffer size must match");
 
 extern struct SaveBuffer gSaveBuffer;
 
@@ -224,7 +226,7 @@ static void save_main_menu_data(void) {
         add_save_block_signature(&gSaveBuffer.menuData[0], sizeof(gSaveBuffer.menuData[0]), MENU_DATA_MAGIC);
 
         // Back up data
-        bcopy(&gSaveBuffer.menuData[0], &gSaveBuffer.menuData[1], sizeof(gSaveBuffer.menuData[1]));
+        //bcopy(&gSaveBuffer.menuData[0], &gSaveBuffer.menuData[1], sizeof(gSaveBuffer.menuData[1]));
 
         // Write to EEPROM
         write_eeprom_data(gSaveBuffer.menuData, sizeof(gSaveBuffer.menuData));
@@ -358,7 +360,7 @@ void save_file_load_all(void) {
 
     // Verify the main menu data and create a backup copy if only one of the slots is valid.
     validSlots = verify_save_block_signature(&gSaveBuffer.menuData[0], sizeof(gSaveBuffer.menuData[0]), MENU_DATA_MAGIC);
-    validSlots |= verify_save_block_signature(&gSaveBuffer.menuData[1], sizeof(gSaveBuffer.menuData[1]),MENU_DATA_MAGIC) << 1;
+    //validSlots |= verify_save_block_signature(&gSaveBuffer.menuData[1], sizeof(gSaveBuffer.menuData[1]),MENU_DATA_MAGIC) << 1;
     switch (validSlots) {
         case 0: // Neither copy is correct
             wipe_main_menu_data();
@@ -389,6 +391,44 @@ void save_file_load_all(void) {
     }
 }
 
+#ifdef PUPPYCAM
+void puppycam_check_save(void)
+{
+    if (gSaveBuffer.menuData[0].firstBoot != 4 || gSaveBuffer.menuData[0].saveOptions.sensitivityX < 5 || gSaveBuffer.menuData[0].saveOptions.sensitivityY < 5)
+    {
+        wipe_main_menu_data();
+        gSaveBuffer.menuData[0].firstBoot = 4;
+        puppycam_default_config();
+    }
+}
+
+void puppycam_get_save(void)
+{
+    gPuppyCam.options = gSaveBuffer.menuData[0].saveOptions;
+
+    gSaveBuffer.menuData[0].firstBoot = gSaveBuffer.menuData[0].firstBoot;
+    #ifdef WIDE
+    gWidescreen = save_file_get_widescreen_mode();
+    #endif
+
+    puppycam_check_save();
+}
+
+void puppycam_set_save(void)
+{
+    gSaveBuffer.menuData[0].saveOptions = gPuppyCam.options;
+
+    gSaveBuffer.menuData[0].firstBoot = 4;
+
+    #ifdef WIDE
+    save_file_set_widescreen_mode(gWidescreen);
+    #endif
+
+    gMainMenuDataModified = TRUE;
+    save_main_menu_data();
+}
+#endif
+
 /**
  * Reload the current save file from its backup copy, which is effectively a
  * a cached copy of what has been written to EEPROM.
@@ -413,8 +453,13 @@ void save_file_reload(void) {
 void save_file_collect_star_or_key(s16 coinScore, s16 starIndex) {
     s32 fileIndex = gCurrSaveFileNum - 1;
     s32 courseIndex = gCurrCourseNum - 1;
-
+#ifdef GLOBAL_STAR_IDS
+    s32 starByte = (starIndex / 7) - 1;
+    s32 starFlag = 1 << (starIndex % 7);
+#else
     s32 starFlag = 1 << starIndex;
+#endif
+
     UNUSED s32 flags = save_file_get_flags();
 
     gLastCompletedCourseNum = courseIndex + 1;
@@ -456,9 +501,15 @@ void save_file_collect_star_or_key(s16 coinScore, s16 starIndex) {
             break;
 
         default:
+#ifdef GLOBAL_STAR_IDS
+            if (!(save_file_get_star_flags(fileIndex, starByte) & starFlag)) {
+                save_file_set_star_flags(fileIndex, starByte, starFlag);
+            }
+#else
             if (!(save_file_get_star_flags(fileIndex, courseIndex) & starFlag)) {
                 save_file_set_star_flags(fileIndex, courseIndex, starFlag);
             }
+#endif
             break;
     }
 }
@@ -616,6 +667,19 @@ void save_file_set_sound_mode(u16 mode) {
     gMainMenuDataModified = TRUE;
     save_main_menu_data();
 }
+
+#ifdef WIDE
+u8 save_file_get_widescreen_mode(void) {
+    return gSaveBuffer.menuData[0].wideMode;
+}
+
+void save_file_set_widescreen_mode(u8 mode) {
+    gSaveBuffer.menuData[0].wideMode = mode;
+
+    gMainMenuDataModified = TRUE;
+    save_main_menu_data();
+}
+#endif
 
 u16 save_file_get_sound_mode(void) {
     return gSaveBuffer.menuData[0].soundMode;

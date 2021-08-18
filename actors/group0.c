@@ -30,3 +30,7 @@
 
 #include "z_moving_platform/model.inc.c"
 #include "z_moving_platform/collision.inc.c"
+#ifdef S2DEX_TEXT_ENGINE
+#include "src/s2d_engine/config.h"
+#include FONT_C_FILE
+#endif
