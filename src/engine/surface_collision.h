@@ -19,7 +19,6 @@
 extern const Collision z_moving_platform_collision[];
 extern const Collision h_moving_platform_collision[];
 extern const Collision squishy_flesh_platform_collision[];
-extern const Collision spiked_goomba_collision[];
 
 struct WallCollisionData
 {

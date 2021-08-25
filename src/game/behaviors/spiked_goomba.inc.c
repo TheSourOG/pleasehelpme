@@ -200,7 +200,7 @@ static void spiked_goomba_act_jump(void) {
  * mario.
  */
 void spiked_goomba_weakly_attacked(void) {
-    o->oAction = ACT_BURNING_GROUND;
+    o->oAction = ACT_SPIKE_BOOST;
     o->oAction = GOOMBA_ACT_ATTACKED_MARIO;
 }
 

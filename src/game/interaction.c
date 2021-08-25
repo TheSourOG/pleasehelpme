@@ -1094,13 +1094,15 @@ u32 interact_igloo_barrier(struct MarioState *m, UNUSED u32 interactType, struct
     if ((interaction & (INT_GROUND_POUND_OR_TWIRL | INT_HIT_FROM_ABOVE)) && !(gMarioState->action & ACT_FLAG_RIDING_SHELL)) {
         o->oAction = 1;
         bounce_off_object(m, o, 600);
-        set_mario_action(m, ACT_LAVA_BOOST, 0);
+        m->hurtCounter += (m->flags & MARIO_CAP_ON_HEAD) ? 4 : 8;
+        set_mario_action(m, ACT_SPIKE_BOOST, 0);
+        play_sound(SOUND_MARIO_WAAAOOOW, m->marioObj->header.gfx.cameraToObject);
     } else if (interaction & (INT_HIT_FROM_BELOW | INT_KICK | INT_SLIDE_KICK | INT_PUNCH)) {
-        take_damage_and_knock_back(m, o);
-    } else {
-        push_mario_out_of_object(m, o, 5.0f);
+        attack_object(o, interaction);
+        bounce_back_from_attack(m, interaction);
+        bounce_off_object(m, o, 600);
+        obj_mark_for_deletion(o);
     }
-
     return FALSE;
 }
 

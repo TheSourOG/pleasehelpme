@@ -858,6 +858,13 @@ static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actio
             }
             break;
 
+        case ACT_SPIKE_BOOST:
+            m->vel[1] = 64.0f;
+            if (actionArg == 0) {
+                m->forwardVel = 0.0f;
+            }
+            break;
+
         case ACT_DIVE:
             if ((fowardVel = m->forwardVel + 15.0f) > 48.0f) {
                 fowardVel = 48.0f;
