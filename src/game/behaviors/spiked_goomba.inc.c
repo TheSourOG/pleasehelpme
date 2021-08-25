@@ -9,7 +9,7 @@
  * Hitbox for goomba.
  */
 static struct ObjectHitbox sSpikedGoombaHitbox = {
-    /* interactType:      */ INTERACT_HIT_FROM_BELOW,
+    /* interactType:      */ INTERACT_IGLOO_BARRIER,
     /* downOffset:        */ 0,
     /* damageOrCoinValue: */ 2,
     /* health:            */ 0,

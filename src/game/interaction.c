@@ -1087,9 +1087,20 @@ u32 interact_igloo_barrier(struct MarioState *m, UNUSED u32 interactType, struct
     //! Sets used object without changing action (LOTS of interesting glitches,
     // but unfortunately the igloo barrier is the only object with this interaction
     // type)
+    u32 interaction;
     m->interactObj = o;
     m->usedObj = o;
-    push_mario_out_of_object(m, o, 5.0f);
+    interaction = determine_interaction(m, o);
+    if ((interaction & (INT_GROUND_POUND_OR_TWIRL | INT_HIT_FROM_ABOVE)) && !(gMarioState->action & ACT_FLAG_RIDING_SHELL)) {
+        o->oAction = 1;
+        bounce_off_object(m, o, 600);
+        set_mario_action(m, ACT_LAVA_BOOST, 0);
+    } else if (interaction & (INT_HIT_FROM_BELOW | INT_KICK | INT_SLIDE_KICK | INT_PUNCH)) {
+        take_damage_and_knock_back(m, o);
+    } else {
+        push_mario_out_of_object(m, o, 5.0f);
+    }
+
     return FALSE;
 }
 
