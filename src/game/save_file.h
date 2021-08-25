@@ -63,6 +63,7 @@ struct MainMenuSaveData
 #ifdef WIDE
     u8 wideMode: 1;
 #endif
+    u8 cameraSpeedSetting: 3;
 
 #ifdef VERSION_EU
     u8 language: 2;
@@ -178,6 +179,8 @@ u16 save_file_get_sound_mode(void);
 u8 save_file_get_widescreen_mode(void);
 void save_file_set_widescreen_mode(u8 mode);
 #endif
+u8 save_file_get_camera_speed(void);
+void save_file_set_camera_speed(u8 speed);
 void save_file_move_cap_to_default_location(void);
 
 void disable_warp_checkpoint(void);

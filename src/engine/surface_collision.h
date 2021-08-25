@@ -15,7 +15,11 @@
 // It doesn't match if ".0" is removed or ".f" is added
 #define FLOOR_LOWER_LIMIT_SHADOW    (FLOOR_LOWER_LIMIT + 1000.0)
 
+// Custom Collision till I find where to store it
 extern const Collision z_moving_platform_collision[];
+extern const Collision h_moving_platform_collision[];
+extern const Collision squishy_flesh_platform_collision[];
+extern const Collision spiked_goomba_collision[];
 
 struct WallCollisionData
 {

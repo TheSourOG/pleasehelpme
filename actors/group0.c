@@ -34,3 +34,15 @@
 #include "src/s2d_engine/config.h"
 #include FONT_C_FILE
 #endif
+
+#include "h_moving_platform/model.inc.c"
+#include "h_moving_platform/collision.inc.c"
+#include "squishy_flesh_platform/model.inc.c"
+#include "squishy_flesh_platform/collision.inc.c"
+
+#include "goomba/model.inc.c"
+#include "goomba/anims/data.inc.c"
+#include "goomba/anims/table.inc.c"
+UNUSED static const u64 binid_17 = 17;
+#include "spiked_goomba/model.inc.c"
+#include "spiked_goomba/collision.inc.c"

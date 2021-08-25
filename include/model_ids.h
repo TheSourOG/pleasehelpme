@@ -25,8 +25,13 @@
 
 #define MODEL_MARIO                       0x01        // mario_geo
 #define MODEL_LUIGI                       0x02        // unused
+#define MODEL_GOOMBA                      0xC0        // goomba_geo
 #define MODEL_BLINKING_MUSHROOM           0xFF        // blinking_mushroom_geo
-#define MODEL_Z_MOVING_PLATFORM           0x9F        // z_moving_platform_geo
+#define MODEL_Z_MOVING_PLATFORM           0xFE        // z_moving_platform_geo
+#define MODEL_H_MOVING_PLATFORM           0xFD        // h_moving_platform_geo
+#define MODEL_SQUISHY_FLESH_PLATFORM      0xFC        // squishy_flesh_platform_geo
+#define MODEL_SPIKED_GOOMBA               0xFB        // spiked_goomba_geo
+
 
 /* Various static level geometry, the geo layout differs but terrain object presets treat them the same.*/
 
@@ -531,7 +536,6 @@
 // find me
 #define MODEL_KOOPA_SHELL                 0xBE        // koopa_shell_geo
 #define MODEL_KOOPA_WITHOUT_SHELL         0xBF        // koopa_without_shell_geo
-#define MODEL_GOOMBA                      0xC0        // goomba_geo
 #define MODEL_SEAWEED                     0xC1        // seaweed_geo
 #define MODEL_AMP                         0xC2        // dAmpGeo
 #define MODEL_BOBOMB_BUDDY                0xC3        // bobomb_buddy_geo

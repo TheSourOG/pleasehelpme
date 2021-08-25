@@ -77,6 +77,7 @@ f32 sObjSavedPosZ;
 
 void wiggler_jumped_on_attack_handler(void);
 void huge_goomba_weakly_attacked(void);
+void spiked_goomba_weakly_attacked(void);
 
 static s32 obj_is_rendering_enabled(void) {
     if (o->header.gfx.node.flags & GRAPH_RENDER_ACTIVE) {
@@ -747,6 +748,10 @@ static s32 obj_handle_attacks(struct ObjectHitbox *hitbox, s32 attackedMarioActi
                     o->oNumLootCoins = -1;
                     obj_set_squished_action();
                     break;
+
+                case ATTACK_HANDLER_CUSTOM_CONTACT_BURN:
+                    huge_goomba_weakly_attacked();
+                    break;
             }
 
             o->oInteractStatus = 0;
@@ -932,6 +937,7 @@ static void treat_far_home_as_mario(f32 threshold) {
 #include "behaviors/haunted_chair.inc.c"
 #include "behaviors/mad_piano.inc.c"
 #include "behaviors/flying_bookend_switch.inc.c"
+#include "behaviors/spiked_goomba.inc.c"
 
 /**
  * Used by bowser, fly guy, piranha plant, and fire spitters.

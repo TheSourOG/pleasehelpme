@@ -379,10 +379,132 @@ extern Gfx z_moving_platform_Mesh_mesh_layer_1[];
 extern Gfx z_moving_platform_Mesh_mesh[];
 extern Gfx z_moving_platform_material_revert_render_settings[];
 
+// h_moving_platform
+extern const GeoLayout h_moving_platform_geo[];
+extern u8 h_moving_platform_bluepuss_ci4[];
+extern u8 h_moving_platform_bluepuss_ci4_pal_rgba16[];
+extern Vtx h_moving_platform_Mesh_mesh_layer_1_vtx_cull[8];
+extern Vtx h_moving_platform_Mesh_mesh_layer_1_vtx_0[24];
+extern Gfx h_moving_platform_Mesh_mesh_layer_1_tri_0[];
+extern Gfx mat_h_moving_platform_pussplatformtop[];
+extern Gfx mat_revert_h_moving_platform_pussplatformtop[];
+extern Gfx h_moving_platform_Mesh_mesh_layer_1[];
+extern Gfx h_moving_platform_material_revert_render_settings[];
+
+// squishy_flesh_platform
+extern const GeoLayout squishy_flesh_platform_geo[];
+extern Lights1 squishy_flesh_platform_Brown_lights;
+extern Lights1 squishy_flesh_platform_face_lights;
+extern Lights1 squishy_flesh_platform_White_lights;
+extern Lights1 squishy_flesh_platform_Coat_lights;
+extern Lights1 squishy_flesh_platform_spots_lights;
+extern u8 squishy_flesh_platform_trippyass2_ci4[];
+extern u8 squishy_flesh_platform_trippyass2_ci4_pal_rgba16[];
+extern u8 squishy_flesh_platform_toad_face_rgba16_ci8[];
+extern u8 squishy_flesh_platform_toad_face_rgba16_ci8_pal_rgba16[];
+extern u8 squishy_flesh_platform_toad_head_rgba16_ci8[];
+extern u8 squishy_flesh_platform_toad_head_rgba16_ci8_pal_rgba16[];
+extern Vtx squishy_flesh_platform_Mesh_mesh_layer_5_vtx_cull[8];
+extern Vtx squishy_flesh_platform_Mesh_mesh_layer_5_vtx_0[91];
+extern Gfx squishy_flesh_platform_Mesh_mesh_layer_5_tri_0[];
+extern Vtx squishy_flesh_platform_Toad_mesh_layer_1_vtx_cull[8];
+extern Vtx squishy_flesh_platform_Toad_mesh_layer_1_vtx_0[51];
+extern Gfx squishy_flesh_platform_Toad_mesh_layer_1_tri_0[];
+extern Vtx squishy_flesh_platform_Toad_mesh_layer_1_vtx_1[82];
+extern Gfx squishy_flesh_platform_Toad_mesh_layer_1_tri_1[];
+extern Vtx squishy_flesh_platform_Toad_mesh_layer_1_vtx_2[60];
+extern Gfx squishy_flesh_platform_Toad_mesh_layer_1_tri_2[];
+extern Vtx squishy_flesh_platform_Toad_mesh_layer_1_vtx_3[51];
+extern Gfx squishy_flesh_platform_Toad_mesh_layer_1_tri_3[];
+extern Vtx squishy_flesh_platform_Toad_mesh_layer_1_vtx_4[106];
+extern Gfx squishy_flesh_platform_Toad_mesh_layer_1_tri_4[];
+extern Gfx mat_squishy_flesh_platform_squishyflesh[];
+extern Gfx mat_revert_squishy_flesh_platform_squishyflesh[];
+extern Gfx mat_squishy_flesh_platform_Brown[];
+extern Gfx mat_squishy_flesh_platform_face[];
+extern Gfx mat_revert_squishy_flesh_platform_face[];
+extern Gfx mat_squishy_flesh_platform_White[];
+extern Gfx mat_squishy_flesh_platform_Coat[];
+extern Gfx mat_squishy_flesh_platform_spots[];
+extern Gfx mat_revert_squishy_flesh_platform_spots[];
+extern Gfx squishy_flesh_platform_Mesh_mesh_layer_5[];
+extern Gfx squishy_flesh_platform_Toad_mesh_layer_1[];
+extern Gfx squishy_flesh_platform_material_revert_render_settings[];
+
+// goomba
+extern const GeoLayout goomba_geo[];
+extern const Gfx goomba_seg8_dl_0801B2E8[];
+extern const Gfx goomba_seg8_dl_0801B560[];
+extern const Gfx goomba_seg8_dl_0801B5A0[];
+extern const Gfx goomba_seg8_dl_0801B5C8[];
+extern const Gfx goomba_seg8_dl_0801B5F0[];
+extern const Gfx goomba_seg8_dl_0801B658[];
+extern const Gfx goomba_seg8_dl_0801B690[];
+extern const Gfx goomba_seg8_dl_0801CE20[];
+extern const Gfx goomba_seg8_dl_0801CF78[];
+extern const Gfx goomba_seg8_dl_0801D0D0[];
+extern const Gfx goomba_seg8_dl_0801D360[];
+extern const Gfx goomba_seg8_dl_0801D760[];
+extern const struct Animation *const goomba_seg8_anims_0801DA4C[];
+
+// spiked_goomba
+extern const GeoLayout spiked_goomba_000_switch_opt1[];
+extern const GeoLayout spiked_goomba_geo[];
+extern Lights1 spiked_goomba_Body_lights;
+extern Lights1 spiked_goomba_Face_lights;
+extern Lights1 spiked_goomba_spike_lights;
+extern Lights1 spiked_goomba_Pallette_lights;
+extern Lights1 spiked_goomba_Crazy_Face_lights;
+extern u8 spiked_goomba_goomba_body_rgba16_rgba16[];
+extern u8 spiked_goomba_goomba_face_rgba16_rgba16[];
+extern u8 spiked_goomba_Palette_rgba32[];
+extern u8 spiked_goomba_goomba_face_blink_rgba16_rgba16[];
+extern Vtx spiked_goomba_000_displaylist_mesh_layer_4_vtx_0[4];
+extern Gfx spiked_goomba_000_displaylist_mesh_layer_4_tri_0[];
+extern Vtx spiked_goomba_000_offset_002_mesh_layer_1_vtx_0[55];
+extern Gfx spiked_goomba_000_offset_002_mesh_layer_1_tri_0[];
+extern Vtx spiked_goomba_000_offset_002_mesh_layer_1_vtx_1[25];
+extern Gfx spiked_goomba_000_offset_002_mesh_layer_1_tri_1[];
+extern Vtx spiked_goomba_000_offset_002_mesh_layer_1_vtx_2[13];
+extern Gfx spiked_goomba_000_offset_002_mesh_layer_1_tri_2[];
+extern Vtx spiked_goomba_000_offset_003_mesh_layer_1_vtx_0[20];
+extern Gfx spiked_goomba_000_offset_003_mesh_layer_1_tri_0[];
+extern Vtx spiked_goomba_000_offset_004_mesh_layer_1_vtx_0[20];
+extern Gfx spiked_goomba_000_offset_004_mesh_layer_1_tri_0[];
+extern Gfx mat_spiked_goomba_Body[];
+extern Gfx mat_revert_spiked_goomba_Body[];
+extern Gfx mat_spiked_goomba_Face[];
+extern Gfx mat_spiked_goomba_spike[];
+extern Gfx mat_revert_spiked_goomba_spike[];
+extern Gfx mat_spiked_goomba_Pallette[];
+extern Gfx mat_revert_spiked_goomba_Pallette[];
+extern Gfx mat_spiked_goomba_Crazy_Face[];
+extern Gfx spiked_goomba_000_displaylist_mesh_layer_4[];
+extern Gfx spiked_goomba_000_offset_002_mesh_layer_1[];
+extern Gfx spiked_goomba_000_offset_002_mesh_layer_1_mat_override_Crazy_Face_0[];
+extern Gfx spiked_goomba_000_offset_003_mesh_layer_1[];
+extern Gfx spiked_goomba_000_offset_004_mesh_layer_1[];
+extern Gfx spiked_goomba_material_revert_render_settings[];
+extern const struct Animation *const goomba_seg8_anims_0801DA4C[];
+
 #include "blinking_mushroom/geo_header.h"
 
 #include "z_moving_platform/geo_header.h"
 
 #include "z_moving_platform/collision_header.h"
+
+#include "h_moving_platform/geo_header.h"
+
+#include "h_moving_platform/collision_header.h"
+
+#include "squishy_flesh_platform/geo_header.h"
+
+#include "squishy_flesh_platform/collision_header.h"
+
+#include "goomba/geo_header.h"
+
+#include "spiked_goomba/geo_header.h"
+
+#include "spiked_goomba/collision_header.h"
 
 #endif

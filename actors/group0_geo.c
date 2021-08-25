@@ -19,3 +19,7 @@
 #include "blinking_mushroom/geo.inc.c"
 
 #include "z_moving_platform/geo.inc.c"
+#include "h_moving_platform/geo.inc.c"
+#include "squishy_flesh_platform/geo.inc.c"
+#include "goomba/geo.inc.c"
+#include "spiked_goomba/geo.inc.c"

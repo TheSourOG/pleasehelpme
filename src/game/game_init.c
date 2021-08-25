@@ -51,6 +51,11 @@ u8 gBorderHeight;
 #ifdef CUSTOM_DEBUG
 u8 gCustomDebugMode;
 #endif
+u8 gCameraSpeed = 2;
+u8 gWaterCamOverride;
+u8 gFlyingCamOverride;
+u8 gKeepCliffCam;
+s32 gCliffTimer;
 #ifdef EEP
 s8 gEepromProbe;
 #endif
@@ -739,6 +744,7 @@ void thread5_game_loop(UNUSED void *arg) {
 
     play_music(SEQ_PLAYER_SFX, SEQUENCE_ARGS(0, SEQ_SOUND_PLAYER), 0);
     set_sound_mode(save_file_get_sound_mode());
+    gCameraSpeed = (save_file_get_camera_speed());
 #ifdef WIDE
     gWidescreen = save_file_get_widescreen_mode();
 #endif

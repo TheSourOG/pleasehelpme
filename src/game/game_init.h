@@ -45,6 +45,10 @@ extern u8 gIsConsole;
 #ifdef WIDE
 extern s16 gWidescreen;
 #endif
+extern u8 gCameraSpeed;
+extern u8 gWaterCamOverride;
+extern u8 gFlyingCamOverride;
+extern u8 gKeepCliffCam;
 extern u8 gBorderHeight;
 #ifdef CUSTOM_DEBUG
 extern u8 gCustomDebugMode;

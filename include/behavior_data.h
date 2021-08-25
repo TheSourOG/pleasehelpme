@@ -544,5 +544,8 @@ extern const BehaviorScript bhvIntroScene[];
 extern const BehaviorScript bhvUnusedFakeStar[];
 extern const BehaviorScript bhvBlinkingMushroom[];
 extern const BehaviorScript bhvZMovingPlatform[];
+extern const BehaviorScript bhvHMovingPlatform[];
+extern const BehaviorScript bhvSquishyPlatform[];
+extern const BehaviorScript bhvSpikedGoomba[];
 
 #endif // BEHAVIOR_DATA_H
