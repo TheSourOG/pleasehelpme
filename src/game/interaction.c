@@ -1096,6 +1096,7 @@ u32 interact_igloo_barrier(struct MarioState *m, UNUSED u32 interactType, struct
         bounce_off_object(m, o, 600);
         m->hurtCounter += (m->flags & MARIO_CAP_ON_HEAD) ? 4 : 8;
         set_mario_action(m, ACT_SPIKE_BOOST, 0);
+        spawn_sparkle_particles(3, 200, 80, -60);
         play_sound(SOUND_MARIO_WAAAOOOW, m->marioObj->header.gfx.cameraToObject);
     } else if (interaction & (INT_HIT_FROM_BELOW | INT_KICK | INT_SLIDE_KICK | INT_PUNCH)) {
         attack_object(o, interaction);
