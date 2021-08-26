@@ -1986,10 +1986,6 @@ s16 render_pause_courses_and_castle(void) {
     #if defined(WIDE) && !defined(PUPPYCAM)
         render_widescreen_setting();
         render_camera_speed_setting();
-        if (gPlayer1Controller->buttonPressed & L_TRIG){
-            gWidescreen ^= 1;
-            save_file_set_widescreen_mode(gWidescreen);
-        }
     #endif
     if (gDialogTextAlpha < 250) {
         gDialogTextAlpha += 25;
