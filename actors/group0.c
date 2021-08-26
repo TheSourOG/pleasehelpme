@@ -45,4 +45,3 @@
 #include "goomba/anims/table.inc.c"
 UNUSED static const u64 binid_17 = 17;
 #include "spiked_goomba/model.inc.c"
-#include "spiked_goomba/collision.inc.c"

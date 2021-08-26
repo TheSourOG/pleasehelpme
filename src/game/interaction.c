@@ -1101,7 +1101,8 @@ u32 interact_igloo_barrier(struct MarioState *m, UNUSED u32 interactType, struct
         attack_object(o, interaction);
         bounce_back_from_attack(m, interaction);
         bounce_off_object(m, o, 600);
-        obj_mark_for_deletion(o);
+    } else if (take_damage_and_knock_back(m,o)) {
+        return TRUE;
     }
     return FALSE;
 }
