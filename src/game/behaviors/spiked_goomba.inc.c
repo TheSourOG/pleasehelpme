@@ -9,10 +9,10 @@
  * Hitbox for goomba.
  */
 static struct ObjectHitbox sSpikedGoombaHitbox = {
-    /* interactType:      */ INTERACT_IGLOO_BARRIER,
+    /* interactType:      */ INTERACT_SPIKED_ENEMY,
     /* downOffset:        */ 0,
     /* damageOrCoinValue: */ 2,
-    /* health:            */ 0,
+    /* health:            */ 1,
     /* numLootCoins:      */ 2,
     /* radius:            */ 72,
     /* height:            */ 50,
@@ -45,21 +45,21 @@ static struct SpikedGoombaProperties sSpikedGoombaProperties[] = {
 static u8 sSpikedGoombaAttackHandlers[][6] = {
     // regular and tiny
     {
-        /* ATTACK_PUNCH:                 */ ATTACK_HANDLER_KNOCKBACK,
-        /* ATTACK_KICK_OR_TRIP:          */ ATTACK_HANDLER_KNOCKBACK,
-        /* ATTACK_FROM_ABOVE:            */ ATTACK_HANDLER_CUSTOM_CONTACT_BURN,
-        /* ATTACK_GROUND_POUND_OR_TWIRL: */ ATTACK_HANDLER_CUSTOM_CONTACT_BURN,
-        /* ATTACK_FAST_ATTACK:           */ ATTACK_HANDLER_KNOCKBACK,
-        /* ATTACK_FROM_BELOW:            */ ATTACK_HANDLER_KNOCKBACK,
+        /* ATTACK_PUNCH:                 */ ATTACK_HANDLER_NOP,
+        /* ATTACK_KICK_OR_TRIP:          */ ATTACK_HANDLER_NOP,
+        /* ATTACK_FROM_ABOVE:            */ ATTACK_HANDLER_SPECIAL_HUGE_GOOMBA_WEAKLY_ATTACKED,
+        /* ATTACK_GROUND_POUND_OR_TWIRL: */ ATTACK_HANDLER_NOP,
+        /* ATTACK_FAST_ATTACK:           */ ATTACK_HANDLER_NOP,
+        /* ATTACK_FROM_BELOW:            */ ATTACK_HANDLER_NOP,
     },
     // huge
     {
-        /* ATTACK_PUNCH:                 */ ATTACK_HANDLER_CUSTOM_CONTACT_BURN,
-        /* ATTACK_KICK_OR_TRIP:          */ ATTACK_HANDLER_CUSTOM_CONTACT_BURN,
+        /* ATTACK_PUNCH:                 */ ATTACK_HANDLER_SPECIAL_HUGE_GOOMBA_WEAKLY_ATTACKED,
+        /* ATTACK_KICK_OR_TRIP:          */ ATTACK_HANDLER_SPECIAL_HUGE_GOOMBA_WEAKLY_ATTACKED,
         /* ATTACK_FROM_ABOVE:            */ ATTACK_HANDLER_SQUISHED,
         /* ATTACK_GROUND_POUND_OR_TWIRL: */ ATTACK_HANDLER_SQUISHED_WITH_BLUE_COIN,
-        /* ATTACK_FAST_ATTACK:           */ ATTACK_HANDLER_CUSTOM_CONTACT_BURN,
-        /* ATTACK_FROM_BELOW:            */ ATTACK_HANDLER_CUSTOM_CONTACT_BURN,
+        /* ATTACK_FAST_ATTACK:           */ ATTACK_HANDLER_SPECIAL_HUGE_GOOMBA_WEAKLY_ATTACKED,
+        /* ATTACK_FROM_BELOW:            */ ATTACK_HANDLER_SPECIAL_HUGE_GOOMBA_WEAKLY_ATTACKED,
     },
 };
 
@@ -248,13 +248,23 @@ void bhv_spiked_goomba_update(void) {
         // without harming it (e.g. by punching it), the goomba will be marked as dead
         // and will not respawn if Mario leaves and re-enters the spawner's radius
         // even though the goomba isn't actually dead.
+
         if (obj_handle_attacks(&sSpikedGoombaHitbox, GOOMBA_ACT_ATTACKED_MARIO,
                                sSpikedGoombaAttackHandlers[o->oGoombaSize & 1])) {
-            mark_goomba_as_dead();
+            obj_die_if_health_non_positive();
+            if (--o->oHealth) mark_goomba_as_dead();
+            else {
+                o->oAction = GOOMBA_ACT_JUMP;
+                o->oFaceAngleYaw = obj_angle_to_object(gMarioObject, o);
+                o->oForwardVel = -25.0f;
+                o->oVelY = 25.0f;
+            }
         }
 
         cur_obj_move_standard(-78);
     } else {
         o->oAnimState = TRUE;
+        o->oAction = GOOMBA_ACT_JUMP;
+        o->oFlags |= OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW;
     }
 }

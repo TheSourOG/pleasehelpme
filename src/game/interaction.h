@@ -35,7 +35,7 @@
 #define INTERACT_BBH_ENTRANCE   /* 0x08000000 */ (1 << 27)
 #define INTERACT_SNUFIT_BULLET  /* 0x10000000 */ (1 << 28)
 #define INTERACT_SHOCK          /* 0x20000000 */ (1 << 29)
-#define INTERACT_IGLOO_BARRIER  /* 0x40000000 */ (1 << 30)
+#define INTERACT_SPIKED_ENEMY   /* 0x40000000 */ (1 << 30)
 #define INTERACT_UNKNOWN_31     /* 0x80000000 */ (1 << 31)
 
 

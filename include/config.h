@@ -58,7 +58,7 @@
 // Uncomment this define and set a test level in order to boot straight into said level.
 // This allows you to quickly test the level you're working on.
 // If you want the game to boot normally, just comment out the define again.
-#define TEST_LEVEL LEVEL_CCM
+#define TEST_LEVEL LEVEL_BOB
 
 // COMMON HACK CHANGES
 // Internal ROM name. NEEDS TO BE **EXACTLY** 20 CHARACTERS. Can't be 19 characters, can't be 21 characters. You can fill it with spaces.
@@ -87,7 +87,7 @@
 // Platform displacement 2 also known as momentum patch. Makes Mario keep the momemtum from moving platforms. Doesn't break treadmills anymore!
 #define PLATFORM_DISPLACEMENT_2
 // Stars don't kick you out of the level
-// #define NON_STOP_STARS
+#define NON_STOP_STARS
 // Uncomment this if you want global star IDs (useful for creating an open world hack ala MVC)
 //#define GLOBAL_STAR_IDS
 // Uncomment this if you want to skip the title screen (Super Mario 64 logo)
@@ -95,7 +95,7 @@
 // Uncomment this if you want to keep the mario head and not skip it
 //#define KEEP_MARIO_HEAD
 // Enables "parallel lakitu camera" or "aglab cam" which lets you move the camera smoothly with the dpad
-#define PARALLEL_LAKITU_CAM
+//#define PARALLEL_LAKITU_CAM
 // Allows Mario to ledgegrab sloped floors
 #define NO_FALSE_LEDGEGRABS
 //Adds multiple languages to the game. Just a placeholder for the most part, because it only works with EU, and must be enabled with EU.
@@ -133,7 +133,7 @@
 // 46 degree walkicks
 //#define WALLKICKS_46_DEGREES
 // Disable BLJs and crush SimpleFlips's dreams
-//#define DISABLE_BLJ
+#define DISABLE_BLJ
 
 // RELATING TO EXIT COURSE
 // Disable exit course
@@ -141,11 +141,11 @@
 // Decides whether you can exit course while moving (has no effect if you disable exit course)
 //#define EXIT_COURSE_WHILE_MOVING
 // Decides which level "exit course" takes you to (has no effect if you disable exit course)
-#define EXIT_COURSE_LEVEL LEVEL_CCM
+#define EXIT_COURSE_LEVEL LEVEL_CASTLE_GROUNDS
 // Decides the area node "exit course" takes you to (has no effect if you disable exit course)
 #define EXIT_COURSE_AREA 0x01
 // Decides the warp node "exit course" takes you to (has no effect if you disable exit course)
-#define EXIT_COURSE_NODE 0x1F
+#define EXIT_COURSE_NODE 0x04
 
 // OTHER ENHANCEMENTS
 // Enable widescreen (16:9) support

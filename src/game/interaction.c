@@ -55,7 +55,7 @@ u32 interact_warp(struct MarioState *, u32, struct Object *);
 u32 interact_warp_door(struct MarioState *, u32, struct Object *);
 u32 interact_door(struct MarioState *, u32, struct Object *);
 u32 interact_cannon_base(struct MarioState *, u32, struct Object *);
-u32 interact_igloo_barrier(struct MarioState *, u32, struct Object *);
+u32 interact_spiked_enemy(struct MarioState *, u32, struct Object *);
 u32 interact_tornado(struct MarioState *, u32, struct Object *);
 u32 interact_whirlpool(struct MarioState *, u32, struct Object *);
 u32 interact_strong_wind(struct MarioState *, u32, struct Object *);
@@ -91,7 +91,7 @@ static struct InteractionHandler sInteractionHandlers[] = {
     { INTERACT_WARP_DOOR,      interact_warp_door },
     { INTERACT_DOOR,           interact_door },
     { INTERACT_CANNON_BASE,    interact_cannon_base },
-    { INTERACT_IGLOO_BARRIER,  interact_igloo_barrier },
+    { INTERACT_SPIKED_ENEMY,   interact_spiked_enemy },
     { INTERACT_TORNADO,        interact_tornado },
     { INTERACT_WHIRLPOOL,      interact_whirlpool },
     { INTERACT_STRONG_WIND,    interact_strong_wind },
@@ -1083,10 +1083,7 @@ u32 interact_cannon_base(struct MarioState *m, UNUSED u32 interactType, struct O
     return FALSE;
 }
 
-u32 interact_igloo_barrier(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
-    //! Sets used object without changing action (LOTS of interesting glitches,
-    // but unfortunately the igloo barrier is the only object with this interaction
-    // type)
+u32 interact_spiked_enemy(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
     u32 interaction;
     m->interactObj = o;
     m->usedObj = o;
@@ -1096,7 +1093,7 @@ u32 interact_igloo_barrier(struct MarioState *m, UNUSED u32 interactType, struct
         bounce_off_object(m, o, 600);
         m->hurtCounter += (m->flags & MARIO_CAP_ON_HEAD) ? 4 : 8;
         set_mario_action(m, ACT_SPIKE_BOOST, 0);
-        spawn_sparkle_particles(3, 200, 80, -60);
+        spawn_sparkle_particles(1, 0, 0, 0);
         play_sound(SOUND_MARIO_WAAAOOOW, m->marioObj->header.gfx.cameraToObject);
     } else if (interaction & (INT_HIT_FROM_BELOW | INT_KICK | INT_SLIDE_KICK | INT_PUNCH)) {
         attack_object(o, interaction);
